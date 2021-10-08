@@ -1,10 +1,12 @@
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Navbar />
+      {/* <h1>Hello World</h1> */}
       <Switch>
         <Route exact path="/">
           <h1>My Workouts</h1>
