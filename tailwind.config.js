@@ -5,6 +5,13 @@ module.exports = {
     extend: {},
     fontFamily: {
       'sans': ['Poppins', 'Helvetica', 'sans-serif'],
+     },
+    colors: {
+      blue: {
+        // light: '#85d7ff',
+        DEFAULT: '#366177',
+        // dark: '#009eeb',
+      },
      }
   },
   variants: {
