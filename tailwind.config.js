@@ -12,6 +12,9 @@ module.exports = {
         DEFAULT: '#366177',
         // dark: '#009eeb',
       },
+      white: {
+        DEFAULT: '#ffffff',
+      }
      }
   },
   variants: {
