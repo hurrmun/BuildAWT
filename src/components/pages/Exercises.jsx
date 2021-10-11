@@ -193,6 +193,37 @@ function Exercises() {
       <div className="max-w-2xl mx-auto pt-3 px-4 sm:pt-5 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 gap-1">{showExercises()}</div>
       </div>
+
+      <div className="bg-white px-4 py-3 flex items-center justify-center sm:px-6">
+        <div className="flex-1 flex justify-center">
+          <button className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white">
+            Previous page
+          </button>
+          <button
+            href="#"
+            className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white"
+          >
+            Next page
+          </button>
+        </div>
+        {/* <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-center">
+          <div>
+            <nav
+              className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+              aria-label="Pagination"
+            >
+              <button className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-blue bg-white text-sm font-medium text-blue hover:bg-darkblue hover:text-white">
+                <span className="sr-only">Previous</span>
+                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+              </button>
+              <button className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-blue bg-white text-sm font-medium text-blue hover:bg-darkblue hover:text-white">
+                <span className="sr-only">Next</span>
+                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </nav>
+          </div>
+        </div> */}
+      </div>
     </>
   );
 }
