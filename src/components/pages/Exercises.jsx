@@ -4,6 +4,7 @@ function Exercises() {
   const [categories, setCategories] = useState([]);
   const [equipment, setEquipment] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
+  const [exercises, setExercises] = useState([]);
 
   const fetchAllCategories = async () => {
     try {
@@ -29,10 +30,29 @@ function Exercises() {
     }
   };
 
+  const fetchExercises = async () => {
+    try {
+      const res = await fetch(
+        "https://wger.de/api/v2/exercise/?format=json&language=2"
+      );
+      const data = await res.json();
+      setExercises(data);
+    } catch (e) {
+      console.log("SOMETHING WENT WRONG!!!", e);
+    }
+  };
+
   useEffect(() => {
     fetchAllEquipment();
     fetchAllCategories();
+    fetchExercises();
   }, []);
+
+  const showExercises = () => {
+    return exercises?.results?.map((exercise) => {
+      return <p>{exercise.name}</p>;
+    });
+  };
 
   const filters = [
     {
@@ -83,6 +103,8 @@ function Exercises() {
         );
     // setCheckedItems("");
   };
+
+  console.log(exercises);
 
   //   console.log("options", filters[0].options, filters[1].options);
 
@@ -169,6 +191,14 @@ function Exercises() {
           </div>
         </form>
       </div>
+      <div className="max-w-2xl mx-auto pt-3 px-4 sm:pt-5 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="grid grid-cols-1 gap-1">
+          <div className="border-blue border-solid border-2 rounded-md">
+            <p>Hello</p>
+          </div>
+        </div>
+      </div>
+      {showExercises()}
     </>
   );
 }
