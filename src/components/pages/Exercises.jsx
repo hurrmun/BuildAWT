@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 function Exercises() {
   const [categories, setCategories] = useState([]);
   const [equipment, setEquipment] = useState([]);
+  const [checkedItems, setCheckedItems] = useState([]);
 
   const fetchAllCategories = async () => {
     try {
@@ -38,17 +39,50 @@ function Exercises() {
       id: "equipment",
       name: "Equipment",
       options: equipment.map((item) => {
-        return { equipmentId: item.id, equipmentName: item.name };
+        return {
+          equipmentId: item.id,
+          equipmentName: item.name,
+          type: "equipment",
+        };
       }),
     },
     {
       id: "category",
       name: "Category",
       options: categories.map((item) => {
-        return { categoryId: item.id, categoryName: item.name };
+        return {
+          categoryId: item.id,
+          categoryName: item.name,
+          type: "category",
+        };
       }),
     },
   ];
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log("event", event);
+    console.log("checked items", checkedItems);
+  };
+
+  const handleChange = (event) => {
+    console.log("checked?", event.target.checked);
+    event.target.checked
+      ? setCheckedItems([
+          ...checkedItems,
+          {
+            type: event.target.name,
+            value: event.target.value,
+            name: event.target.id,
+          },
+        ])
+      : setCheckedItems(
+          checkedItems.filter((item) => {
+            return item.name !== event.target.id;
+          })
+        );
+    // setCheckedItems("");
+  };
 
   //   console.log("options", filters[0].options, filters[1].options);
 
@@ -62,7 +96,7 @@ function Exercises() {
         </div>
       </div>
       <div className="max-w-2xl mx-auto pt-7 px-4 sm:pt-10 sm:px-6 lg:max-w-7xl lg:px-8">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-1">
             <h1 className="text-xl font-bold text-blue w-full sm:text-2xl pb-2">
               Filter Exercises
@@ -81,9 +115,10 @@ function Exercises() {
                         >
                           <input
                             type="checkbox"
-                            name={item.equipmentName}
+                            name={item.type}
                             id={item.equipmentName}
                             value={item.equipmentId}
+                            onChange={handleChange}
                           />
                           <label
                             htmlFor={item.equipmentName}
@@ -110,9 +145,10 @@ function Exercises() {
                         >
                           <input
                             type="checkbox"
-                            name={item.categoryName}
+                            name={item.type}
                             id={item.categoryName}
                             value={item.categoryId}
+                            onChange={handleChange}
                           />
                           <label
                             htmlFor={item.categoryName}
