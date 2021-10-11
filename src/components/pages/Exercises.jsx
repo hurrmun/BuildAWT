@@ -39,6 +39,7 @@ function Exercises() {
         `https://wger.de/api/v2/exercise/?format=json&language=2${checkedCategories}${checkedEquipment}`
       );
       const data = await res.json();
+      console.log("json data", data);
       setExercises(data);
     } catch (e) {
       console.log("SOMETHING WENT WRONG!!!", e);
@@ -49,13 +50,16 @@ function Exercises() {
     fetchAllEquipment();
     fetchAllCategories();
     fetchExercises();
-  }, [checkedEquipment, checkedCategories]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkedCategories, checkedEquipment]);
+
+  useEffect(() => {}, []);
 
   const showExercises = () => {
-    return exercises?.results?.map((exercise) => {
+    return exercises?.results?.map((exercise, index) => {
       return (
         <ExerciseContainer
-          key={exercise.name}
+          key={index}
           contents={exercise}
           categories={categories}
           equipment={equipment}
@@ -92,17 +96,17 @@ function Exercises() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("checked Items", checkedItems);
-    // const categoryValues = [];
+    const categoryValues = [];
     const equipmentValues = [];
     for (let i = 0; i < checkedItems.length; i++) {
       if (checkedItems[i].type === "equipment") {
         equipmentValues.push(checkedItems[i].value);
-        //   } else if (checkedItems[i].type === "category") {
-        //     categoryValues.push(checkedItems[i].value);
+      } else if (checkedItems[i].type === "category") {
+        categoryValues.push(checkedItems[i].value);
       }
     }
     setCheckedEquipment("&equipment=" + equipmentValues.toString());
-    // setCheckedCategories("&category=" + categoryValues.toString());
+    setCheckedCategories("&category=" + categoryValues.toString());
     console.log("checked eq", checkedEquipment);
     console.log("checked cat", checkedCategories);
   };
@@ -126,7 +130,18 @@ function Exercises() {
             })
           );
     } else if (event.target.type === "radio") {
-      setCheckedCategories("&category=" + event.target.value);
+      const removeCategory = checkedItems.filter(
+        (item) => item.type !== "category"
+      );
+      setCheckedItems([
+        ...removeCategory,
+        {
+          type: event.target.name,
+          value: event.target.value,
+          name: event.target.id,
+        },
+      ]);
+      //   console.log("checked items", checkedItems);
     }
   };
 
@@ -152,7 +167,7 @@ function Exercises() {
                 <div>
                   <h3 className="text-lg font-bold text-blue p-5">Equipment</h3>
                   <div className="grid grid-cols-2 flex-wrap px-5">
-                    {filters[0]?.options?.map((item) => {
+                    {filters[0]?.options?.map((item, index) => {
                       // console.log("equipments", item);
                       return (
                         <div
@@ -162,7 +177,7 @@ function Exercises() {
                           <input
                             type="checkbox"
                             name={item.type}
-                            id={item.equipmentName}
+                            id={index}
                             value={item.equipmentId}
                             onChange={handleChange}
                             className="text-blue"
@@ -183,7 +198,7 @@ function Exercises() {
                     Target Area
                   </h3>
                   <div className="grid grid-cols-2 flex-wrap px-5">
-                    {filters[1]?.options?.map((item) => {
+                    {filters[1]?.options?.map((item, index) => {
                       // console.log("category", item);
                       return (
                         <div
@@ -193,7 +208,7 @@ function Exercises() {
                           <input
                             type="radio"
                             name={item.type}
-                            id={item.categoryName}
+                            id={index}
                             value={item.categoryId}
                             onChange={handleChange}
                             className="text-blue"
