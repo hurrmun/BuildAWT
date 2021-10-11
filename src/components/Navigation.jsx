@@ -4,7 +4,7 @@ import logoWhite from "../images/logo-white.svg";
 import { NavLink } from "react-router-dom";
 
 const navigation = [
-  { name: "Workouts", href: "/workouts", current: true },
+  { name: "Workouts", href: "/", current: true },
   { name: "Exercises", href: "/exercises", current: false },
   { name: "About", href: "/about", current: false },
 ];
