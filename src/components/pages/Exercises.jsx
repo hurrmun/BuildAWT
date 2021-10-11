@@ -140,6 +140,7 @@ function Exercises() {
                             id={item.equipmentName}
                             value={item.equipmentId}
                             onChange={handleChange}
+                            className="text-blue"
                           />
                           <label
                             htmlFor={item.equipmentName}
@@ -170,6 +171,7 @@ function Exercises() {
                             id={item.categoryName}
                             value={item.categoryId}
                             onChange={handleChange}
+                            className="text-blue"
                           />
                           <label
                             htmlFor={item.categoryName}
