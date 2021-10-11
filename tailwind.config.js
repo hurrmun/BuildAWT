@@ -12,6 +12,11 @@ module.exports = {
         DEFAULT: '#366177',
         // dark: '#009eeb',
       },
+      darkblue: {
+        // light: '#85d7ff',
+        DEFAULT: '#2c5063',
+        // dark: '#009eeb',
+      },
       white: {
         DEFAULT: '#ffffff',
       }
@@ -20,5 +25,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
