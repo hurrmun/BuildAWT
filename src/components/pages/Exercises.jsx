@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ExerciseContainer from "../ExerciseContainer";
 
 function Exercises() {
   const [categories, setCategories] = useState([]);
@@ -33,7 +34,7 @@ function Exercises() {
   const fetchExercises = async () => {
     try {
       const res = await fetch(
-        "https://wger.de/api/v2/exercise/?format=json&language=2"
+        "https://wger.de/api/v2/exerciseinfo?format=json&language=2"
       );
       const data = await res.json();
       setExercises(data);
@@ -50,7 +51,7 @@ function Exercises() {
 
   const showExercises = () => {
     return exercises?.results?.map((exercise) => {
-      return <p>{exercise.name}</p>;
+      return <ExerciseContainer contents={exercise} />;
     });
   };
 
@@ -103,8 +104,6 @@ function Exercises() {
         );
     // setCheckedItems("");
   };
-
-  console.log(exercises);
 
   //   console.log("options", filters[0].options, filters[1].options);
 
@@ -192,13 +191,8 @@ function Exercises() {
         </form>
       </div>
       <div className="max-w-2xl mx-auto pt-3 px-4 sm:pt-5 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div className="grid grid-cols-1 gap-1">
-          <div className="border-blue border-solid border-2 rounded-md">
-            <p>Hello</p>
-          </div>
-        </div>
+        <div className="grid grid-cols-1 gap-1">{showExercises()}</div>
       </div>
-      {showExercises()}
     </>
   );
 }
