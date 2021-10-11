@@ -1,5 +1,6 @@
 import "./App.css";
-import { Switch, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Workouts from "./components/pages/Workouts";
 
@@ -58,7 +59,60 @@ const workoutList = [
   // More products...
 ];
 
+// fetchAllCategories();
+
 function App() {
+  const [categories, setCategories] = useState([]);
+  const [equipment, setEquipment] = useState([]);
+
+  const fetchAllCategories = async () => {
+    try {
+      const res = await fetch(
+        "https://wger.de/api/v2/exercisecategory/?format=json"
+      );
+      const data = await res.json();
+      setCategories(data.results);
+      // console.log(data.results);
+    } catch (e) {
+      console.log("SOMETHING WENT WRONG!!!", e);
+    }
+  };
+
+  const fetchAllEquipment = async () => {
+    try {
+      const res = await fetch("https://wger.de/api/v2/equipment/?format=json");
+      const data = await res.json();
+      setEquipment(data.results);
+      // console.log(data.results);
+    } catch (e) {
+      console.log("SOMETHING WENT WRONG!!!", e);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllCategories();
+    fetchAllEquipment();
+  }, []);
+
+  const filters = [
+    {
+      id: "equipment",
+      name: "Equipment",
+      options: equipment.map((item) => {
+        return { equipmentId: item.id, equipmentName: item.name };
+      }),
+    },
+    {
+      id: "category",
+      name: "Category",
+      options: categories.map((item) => {
+        return { categoryId: item.id, categoryName: item.name };
+      }),
+    },
+  ];
+
+  console.log("options", filters[0].options, filters[1].options);
+
   return (
     <div className="App">
       <Navigation />
@@ -68,7 +122,20 @@ function App() {
           <Workouts workouts={workoutList} />
         </Route>
         <Route path="/exercises">
-          <h1>Exercises</h1>
+          <div className="max-w-2xl mx-auto pt-7 px-4 sm:pt-10 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="grid grid-cols-1 gap-1">
+              <h1 className="text-3xl font-bold text-blue w-full sm:text-4xl justify-self-start">
+                Exercises
+              </h1>
+            </div>
+          </div>
+          <div className="max-w-2xl mx-auto pt-7 px-4 sm:pt-10 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="grid grid-cols-1 gap-1">
+              <h1 className="text-xl font-bold text-blue w-full sm:text-2xl justify-self-start">
+                Filter Exercises
+              </h1>
+            </div>
+          </div>
         </Route>
         <Route path="/about">
           <h1>About</h1>
