@@ -1,17 +1,16 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import logoWhite from "../images/logo-white.svg"
-import { NavLink } from 'react-router-dom'
+import { Disclosure } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import logoWhite from "../images/logo-white.svg";
+import { NavLink } from "react-router-dom";
 
 const navigation = [
-  { name: 'Workouts', href: '/workouts', current: true },
-  { name: 'Exercises', href: '/exercises', current: false },
-  { name: 'About', href: '/about', current: false },
-]
+  { name: "Workouts", href: "/workouts", current: true },
+  { name: "Exercises", href: "/exercises", current: false },
+  { name: "About", href: "/about", current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Navigation() {
@@ -52,10 +51,12 @@ export default function Navigation() {
                         key={item.name}
                         to={item.href}
                         className={classNames(
-                          item.current ? 'bg-darkblue text-white' : 'text-white hover:bg-darkblue hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
+                          item.current
+                            ? "bg-darkblue text-white"
+                            : "text-white hover:bg-darkblue hover:text-white",
+                          "px-3 py-2 rounded-md text-sm font-medium"
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </NavLink>
@@ -72,8 +73,8 @@ export default function Navigation() {
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button> */}
 
-                {/* Profile dropdown */}
-                {/* <Menu as="div" className="ml-3 relative">
+              {/* Profile dropdown */}
+              {/* <Menu as="div" className="ml-3 relative">
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
@@ -138,10 +139,12 @@ export default function Navigation() {
                   key={item.name}
                   to={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </NavLink>
@@ -151,5 +154,5 @@ export default function Navigation() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
