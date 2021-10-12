@@ -8,24 +8,19 @@ module.exports = {
      },
     colors: {
       gray: {
-        // light: '#85d7ff',
         DEFAULT: '#bfbebe',
-        // dark: '#009eeb',
       },
       lightblue: {
-        // light: '#85d7ff',
         DEFAULT: '#52aee0',
-        // dark: '#009eeb',
       },
       blue: {
-        // light: '#85d7ff',
         DEFAULT: '#366177',
-        // dark: '#009eeb',
       },
       darkblue: {
-        // light: '#85d7ff',
         DEFAULT: '#2c5063',
-        // dark: '#009eeb',
+      },
+      red: {
+        DEFAULT: '#e05265',
       },
       white: {
         DEFAULT: '#ffffff',

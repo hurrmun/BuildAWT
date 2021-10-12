@@ -1,78 +1,123 @@
 import "./App.css";
-// import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Workouts from "./components/pages/Workouts";
 import Exercises from "./components/pages/Exercises";
 
 //* change below to state that stores all current workouts
-const workoutList = [
-  {
-    id: 1,
-    name: "Workout 1 Name",
-    href: "#",
-    exercises: "$48",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-    imageAlt:
-      "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
-  },
-  {
-    id: 2,
-    name: "Workout 2 Name",
-    href: "#",
-    exercises: "$35",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-    imageAlt:
-      "Olive drab green insulated bottle with flared screw lid and flat top.",
-  },
-  {
-    id: 3,
-    name: "Workout 3 Name",
-    href: "#",
-    exercises: "$89",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
-    imageAlt:
-      "Person using a pen to cross a task off a productivity paper card.",
-  },
-  {
-    id: 4,
-    name: "Workout 4 Name",
-    href: "#",
-    exercises: "$35",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-    imageAlt:
-      "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 5,
-    name: "Workout 5 Name",
-    href: "#",
-    exercises: "$35",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-    imageAlt:
-      "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  // More products...
-];
-
-// fetchAllCategories();
-
 function App() {
+  const [workoutList, setWorkoutList] = useState([
+    {
+      name: "Workout 1 Name",
+      href: "",
+      exercises: [
+        {
+          id: 345,
+          uuid: "c788d643-150a-4ac7-97ef-84643c6419bf",
+          name: "2 Handed Kettlebell Swing",
+          exercise_base: 9,
+          status: "2",
+          description: "<p>Two Handed Russian Style Kettlebell swing</p>",
+          creation_date: "2015-08-03",
+          category: 10,
+          muscles: [],
+          muscles_secondary: [],
+          equipment: [10],
+          language: 2,
+          license: 2,
+          license_author: "deusinvictus",
+          variations: [],
+        },
+        {
+          id: 227,
+          uuid: "53ca25b3-61d9-4f72-bfdb-492b83484ff5",
+          name: "Arnold Shoulder Press",
+          exercise_base: 20,
+          status: "2",
+          description:
+            "<p>Very common shoulder exercise.</p>\n<p> </p>\n<p>As shown here: https://www.youtube.com/watch?v=vj2w851ZHRM</p>",
+          creation_date: "2014-03-09",
+          category: 13,
+          muscles: [],
+          muscles_secondary: [],
+          equipment: [3],
+          language: 2,
+          license: 1,
+          license_author: "trzr23",
+          variations: [227, 329, 229, 190, 119, 123, 152, 155],
+        },
+        {
+          id: 289,
+          uuid: "6add5973-86d0-4543-928a-6bb8b3f34efc",
+          name: "Axe Hold",
+          exercise_base: 31,
+          status: "2",
+          description:
+            "<p>Grab dumbbells and extend arms to side and hold as long as you can</p>",
+          creation_date: "2014-11-02",
+          category: 8,
+          muscles: [],
+          muscles_secondary: [],
+          equipment: [3],
+          language: 2,
+          license: 1,
+          license_author: "GrosseHund",
+          variations: [],
+        },
+      ],
+      imageSrc:
+        "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      imageAlt: "Workout 1 Image",
+    },
+    {
+      name: "Workout 2 Name",
+      href: "",
+      exercises: [],
+      imageSrc:
+        "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      imageAlt: "Workout 2 Image",
+    },
+    {
+      name: "Workout 3 Name",
+      href: "",
+      exercises: [],
+      imageSrc:
+        "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      imageAlt: "Workout 3 Image",
+    },
+    {
+      name: "Workout 4 Name",
+      href: "",
+      exercises: [],
+      imageSrc:
+        "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      imageAlt: "Workout 4 Image",
+    },
+  ]);
+
+  const addExercise = (workout, exercise) => {
+    console.log("workout", workout);
+    console.log("exercise", exercise);
+    const oldWorkoutList = [...workoutList];
+    const newWorkoutList = oldWorkoutList.map((item) => {
+      if (item.name === workout) {
+        item.exercises.push(exercise);
+      }
+      return item;
+    });
+    setWorkoutList(newWorkoutList);
+  };
+
   return (
     <div className="App">
       <Navigation />
-      {/* <h1>Hello World</h1> */}
       <Switch>
         <Route exact path="/">
           <Workouts workouts={workoutList} />
         </Route>
         <Route path="/exercises">
-          <Exercises />
+          <Exercises workouts={workoutList} addExercise={addExercise} />
         </Route>
         <Route path="/about">
           <h1>About</h1>

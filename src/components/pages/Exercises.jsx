@@ -3,7 +3,7 @@ import ShowExercises from "../ShowExercises";
 import NextPreviousPageButtons from "../NextPreviousPageButtons";
 import { Dialog, Transition } from "@headlessui/react";
 
-function Exercises() {
+function Exercises(props) {
   const [categories, setCategories] = useState([]);
   const [equipment, setEquipment] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
@@ -11,6 +11,8 @@ function Exercises() {
   const [checkedEquipment, setCheckedEquipment] = useState("");
   const [exercises, setExercises] = useState([]);
   //   Modal
+  const [selectedExercise, setSelectedExercise] = useState({});
+  const [selectedWorkout, setSelectedWorkout] = useState("");
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
 
@@ -146,9 +148,16 @@ function Exercises() {
     }
   };
 
-  const showModal = (str) => {
+  const handleSelect = (event) => {
+    event.preventDefault();
+    console.log("value", event.target.value);
+    setSelectedWorkout(event.target.value);
+  };
+
+  const showModal = (contents) => {
+    setSelectedExercise(contents);
     setOpen(true);
-    console.log("str", str);
+    console.log("contents", contents);
   };
 
   return (
@@ -296,7 +305,7 @@ function Exercises() {
                         as="h3"
                         className="text-lg leading-6 font-bold text-blue"
                       >
-                        Add Exercise to Workout
+                        Add {selectedExercise.name} to Workout
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-blue">
@@ -309,33 +318,37 @@ function Exercises() {
                 </div>
                 <div className="px-4 py-3 sm:px-6 flex flex-wrap sm:flex-nowrap">
                   <select
-                    name="pets"
-                    id="pet-select"
+                    name="workouts"
+                    id="workouts-select"
+                    onChange={handleSelect}
                     className="border border-blue rounded-md w-full inline-flex justify-center px-4 py-2 mb-3 sm:mb-0 text-base font-medium text-blue"
                   >
-                    <option value="">Select Workout</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="hamster">Hamster</option>
-                    <option value="parrot">Parrot</option>
-                    <option value="spider">Spider</option>
-                    <option value="goldfish">Goldfish</option>
+                    {props.workouts.map((item, index) => {
+                      return (
+                        <option key={index} value={item.name}>
+                          {item.name}
+                        </option>
+                      );
+                    })}
                   </select>
                   <button
                     type="button"
-                    className="w-full inline-flex justify-center rounded-md border-2 border-blue px-4 py-2 mb-3 sm:mb-0 bg-blue text-sm font-medium text-white hover:bg-darkblue sm:ml-3 sm:w-auto sm:text-sm"
-                    onClick={() => setOpen(false)}
+                    className="w-full inline-flex justify-center rounded-md border-2 border-blue px-4 py-2 mb-3 sm:mb-0 bg-blue text-sm font-medium text-white hover:bg-lightblue hover:border-lightblue sm:ml-3 sm:w-auto sm:text-sm"
+                    onClick={() => {
+                      props.addExercise(selectedWorkout, selectedExercise);
+                      setOpen(false);
+                    }}
                   >
                     Add
                   </button>
-                  <button
+                  <div
                     type="button"
-                    className="w-full inline-flex justify-center rounded-md border border-blue px-4 py-2 bg-white text-sm font-medium text-blue hover:bg-blue hover:text-white sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="w-full inline-flex justify-center rounded-md border border-blue px-4 py-2 cursor-pointer bg-white text-sm font-medium text-blue hover:bg-blue hover:text-white sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >
                     Cancel
-                  </button>
+                  </div>
                 </div>
               </div>
             </Transition.Child>
