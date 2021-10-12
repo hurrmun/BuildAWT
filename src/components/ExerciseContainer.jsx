@@ -24,12 +24,18 @@ function ExerciseContainer(props) {
   return (
     <>
       <div className="border-blue border-solid border-2 rounded-md my-1">
-        <h3 className="bg-blue font-bold text-white text-lg m-4 py-1 px-4 rounded-lg inline-block">
+        <h3 className="bg-blue font-bold text-white text-lg my-4 ml-4 py-1 px-4 rounded-lg inline-block">
           {props.contents.name}
         </h3>
+        <button
+          onClick={() => props.openModal("hehe")}
+          className="bg-white font-medium text-blue text-lg border-2 border-blue my-4 ml-4 py-1 px-4 rounded-lg hover:bg-lightblue hover:border-lightblue hover:text-white inline-block"
+        >
+          + Add to Workout
+        </button>
         <div className="mx-5 mb-2">
           <p className="text-md text-blue py-1">
-            Category: <span className="font-bold">{categoryName}</span>
+            Target Area: <span className="font-bold">{categoryName}</span>
           </p>
           <p className="text-md text-blue py-1">
             Equipment:{" "}

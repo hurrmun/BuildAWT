@@ -10,6 +10,7 @@ const ShowExercises = (props) => {
             contents={exercise}
             categories={props.categories}
             equipment={props.equipment}
+            openModal={props.openModal}
           />
         );
       })}
