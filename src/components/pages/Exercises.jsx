@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ExerciseContainer from "../ExerciseContainer";
+import ShowExercises from "../ShowExercises";
 
 function Exercises() {
   const [categories, setCategories] = useState([]);
@@ -63,21 +63,6 @@ function Exercises() {
     fetchExercises();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkedCategories, checkedEquipment]);
-
-  useEffect(() => {}, []);
-
-  const showExercises = () => {
-    return exercises?.results?.map((exercise, index) => {
-      return (
-        <ExerciseContainer
-          key={index}
-          contents={exercise}
-          categories={categories}
-          equipment={equipment}
-        />
-      );
-    });
-  };
 
   const filters = [
     {
@@ -157,7 +142,7 @@ function Exercises() {
   };
 
   const createNextPreviousPageButtons = () => {
-    console.log("exercises", exercises);
+    // console.log("exercises", exercises);
     return (
       <div className="flex-1 flex justify-center">
         {exercises?.previous ? createPreviousPage(exercises.previous) : null}
@@ -285,7 +270,11 @@ function Exercises() {
         </form>
       </div>
       <div className="max-w-2xl mx-auto pt-3 px-4 sm:pt-5 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div className="grid grid-cols-1 gap-1">{showExercises()}</div>
+        <ShowExercises
+          exercises={exercises}
+          categories={categories}
+          equipment={equipment}
+        />
       </div>
 
       <div className="bg-white px-4 py-3 flex items-center justify-center sm:px-6">
