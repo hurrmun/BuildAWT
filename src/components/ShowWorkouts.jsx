@@ -18,7 +18,7 @@ const ShowWorkouts = (props) => {
           {workout.name}
         </h3>
         <button>
-          <TrashIcon className="h-6 mt-4 text-blue" />
+          <TrashIcon className="h-6 mt-4 text-blue hover:text-red" />
         </button>
       </div>
       <p className="mt-1 text-sm font-medium text-blue truncate">

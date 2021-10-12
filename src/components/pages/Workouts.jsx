@@ -8,7 +8,7 @@ function Workouts(props) {
           <h1 className="text-3xl font-bold text-blue w-full sm:text-4xl justify-self-start">
             My Workouts
           </h1>
-          <button className="bg-blue text-white justify-self-end px-4 rounded">
+          <button className="bg-blue text-white justify-self-end px-4 rounded hover:bg-lightblue hover:border-blue">
             New Workout
           </button>
         </div>
