@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ShowExercises from "../ShowExercises";
+import NextPreviousPageButtons from "../NextPreviousPageButtons";
 
 function Exercises() {
   const [categories, setCategories] = useState([]);
@@ -141,49 +142,6 @@ function Exercises() {
     }
   };
 
-  const createNextPreviousPageButtons = () => {
-    // console.log("exercises", exercises);
-    return (
-      <div className="flex-1 flex justify-center">
-        {exercises?.previous ? createPreviousPage(exercises.previous) : null}
-        {exercises?.next
-          ? createNextPage(exercises.next)
-          : showNoMoreExercises()}
-      </div>
-    );
-  };
-
-  const createPreviousPage = () => {
-    return (
-      <button
-        onClick={() => fetchExercises(exercises.previous)}
-        className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white"
-      >
-        Previous page
-      </button>
-    );
-  };
-
-  const createNextPage = () => {
-    return (
-      <button
-        onClick={() => fetchExercises(exercises.next)}
-        className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white"
-      >
-        Next page
-      </button>
-    );
-  };
-
-  const showNoMoreExercises = () => {
-    return (
-      <p className="w-40 m-2 relative px-4 py-2 text-sm text-center font-medium rounded-md text-white bg-blue">
-        No More Exercises
-      </p>
-    );
-  };
-  //   console.log("options", filters[0].options, filters[1].options);
-
   return (
     <>
       <div className="max-w-2xl mx-auto pt-7 px-4 sm:pt-10 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -278,15 +236,10 @@ function Exercises() {
       </div>
 
       <div className="bg-white px-4 py-3 flex items-center justify-center sm:px-6">
-        {createNextPreviousPageButtons()}
-        {/* <div className="flex-1 flex justify-center">
-          <button className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white">
-            Previous page
-          </button>
-          <button className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white">
-            Next page
-          </button>
-        </div> */}
+        <NextPreviousPageButtons
+          exercises={exercises}
+          passFunction={fetchExercises}
+        />
       </div>
     </>
   );
