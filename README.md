@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+### BuildAWT Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Problem Statement
 
-## Available Scripts
+People who exercise often follow workout plans when they go to the gym. But doing the same routine can get boring after a while, what if there was a way to create and edit your own workouts?
 
-In the project directory, you can run:
+## Problem Solution
 
-### `npm start`
+BuildAWT (pronounced “build-out”) is a workout building tool used to compile personal workouts that you can re-use, edit or delete. It is your number one companion to figure out what you want to do at the gym or anywhere you plan to train.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Search from the list of exercises available in the exercises page (exercises are curated and obtained from the wger API) and add them to your very own workout routine. Devise multiple workouts for different days or muscle groups. You can also add various tags to each exercise to customise the intensity for the way you want to train.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+API Link: https://wger.de/en/software/api
 
-### `npm test`
+## MVP
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app is able to call the API and show specific exercises on the page. The user is able to add the exercise to new or existing workouts. Workouts can be edited and deleted.
 
-### `npm run build`
+## Bonus
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User is able to change the position of exercises or delete them and add rest blocks in the edit page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## User Story
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A user should be able to:
 
-### `npm run eject`
+1. View their workouts
+2. Edit their workouts
+3. Delete workouts
+4. Create a new workout
+5. Search for exercises
+6. Add exercises to new or existing workouts
+7. Remove exercises from workouts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Extra: 8. Add additional information such as: Sets, Reps, Type of set, (and maybe remarks) to the exercise in workout 9. Add editable rest block in edit page 10. Change the position of rest blocks and exercises in edit page
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technology
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+HTML 5
+CSS
+JavaScript
+React
+TailwindCSS
