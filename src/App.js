@@ -186,6 +186,7 @@ function App() {
             workoutList={workoutList}
             categories={categories}
             equipment={equipment}
+            addExercise={addExercise}
           />
         </Route>
       </Switch>

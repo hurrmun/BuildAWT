@@ -3,6 +3,12 @@ import { Dialog, Transition } from "@headlessui/react";
 
 function NewWorkoutModal(props) {
   const cancelButtonRef = useRef(null);
+  const nameInput = useRef();
+  const imageInput = useRef();
+  const handleSubmit = () => {
+    console.log("name", nameInput.current.value);
+    console.log("image", imageInput.current.value);
+  };
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog
@@ -50,6 +56,7 @@ function NewWorkoutModal(props) {
                     >
                       Add a new Workout
                     </Dialog.Title>
+
                     <div className="mt-3 grid grid-cols-1 justify-items-start">
                       <label className="text-blue text-md mb-1" htmlFor="">
                         Workout Name:
@@ -58,6 +65,7 @@ function NewWorkoutModal(props) {
                         type="text"
                         placeholder="Name your workout"
                         className="justify-self-stretch"
+                        ref={nameInput}
                       />
                       <label className="text-blue text-md mb-1 mt-3" htmlFor="">
                         Thumbnail Image:
@@ -66,10 +74,15 @@ function NewWorkoutModal(props) {
                         type="text"
                         placeholder="Image url (e.g https://image.com/imageSelect)"
                         className="justify-self-stretch"
+                        ref={imageInput}
                       />
                     </div>
                     <div className="mt-3 py-3 flex flex-wrap sm:flex-nowrap justify-end">
                       <button
+                        onClick={() => {
+                          handleSubmit();
+                          props.setOpen(false);
+                        }}
                         type="button"
                         className="w-full justify-end rounded-md border-2 border-blue px-4 py-2 mb-3 sm:mb-0 bg-blue text-sm font-medium text-white hover:bg-lightblue hover:border-lightblue sm:ml-3 sm:w-auto sm:text-sm"
                         //   onClick={}

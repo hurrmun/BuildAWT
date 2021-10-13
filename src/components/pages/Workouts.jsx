@@ -49,7 +49,11 @@ function Workouts(props) {
             </Link>
           ))} */}
           <ShowWorkouts workouts={props.workouts} />
-          <NewWorkoutModal open={open} setOpen={setOpen} />
+          <NewWorkoutModal
+            open={open}
+            setOpen={setOpen}
+            addExercise={props.addExercise}
+          />
         </div>
       </div>
     </>
