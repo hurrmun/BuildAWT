@@ -4,13 +4,14 @@ import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Workouts from "./components/pages/Workouts";
 import Exercises from "./components/pages/Exercises";
+import WorkoutName from "./components/pages/WorkoutName";
 
 //* change below to state that stores all current workouts
 function App() {
   const [workoutList, setWorkoutList] = useState([
     {
       name: "Workout 1 Name",
-      href: "",
+      href: "/workouts/Workout 1 Name",
       exercises: [
         {
           id: 345,
@@ -96,6 +97,8 @@ function App() {
     },
   ]);
 
+  const createNewWorkout = () => {};
+
   const addExercise = (workout, exercise) => {
     console.log("workout", workout);
     console.log("exercise", exercise);
@@ -121,6 +124,10 @@ function App() {
         </Route>
         <Route path="/about">
           <h1>About</h1>
+        </Route>
+        <Route path="/workouts/:workoutName">
+          <h1>Workout Name</h1>
+          <WorkoutName />
         </Route>
       </Switch>
     </div>
