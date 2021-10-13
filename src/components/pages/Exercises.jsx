@@ -5,8 +5,6 @@ import FilterExercises from "../FilterExercises";
 import AddWorkoutModal from "../AddWorkoutModal";
 
 function Exercises(props) {
-  const [categories, setCategories] = useState([]);
-  const [equipment, setEquipment] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [checkedCategories, setCheckedCategories] = useState("");
   const [checkedEquipment, setCheckedEquipment] = useState("");
@@ -15,30 +13,6 @@ function Exercises(props) {
   const [selectedExercise, setSelectedExercise] = useState({});
   const [selectedWorkout, setSelectedWorkout] = useState("");
   const [open, setOpen] = useState(false);
-
-  const fetchAllCategories = async () => {
-    try {
-      const res = await fetch(
-        "https://wger.de/api/v2/exercisecategory/?format=json"
-      );
-      const data = await res.json();
-      setCategories(data.results);
-      // console.log(data.results);
-    } catch (e) {
-      console.log("SOMETHING WENT WRONG!!!", e);
-    }
-  };
-
-  const fetchAllEquipment = async () => {
-    try {
-      const res = await fetch("https://wger.de/api/v2/equipment/?format=json");
-      const data = await res.json();
-      setEquipment(data.results);
-      // console.log(data.results);
-    } catch (e) {
-      console.log("SOMETHING WENT WRONG!!!", e);
-    }
-  };
 
   const fetchExercises = async (link) => {
     if (link) {
@@ -65,8 +39,6 @@ function Exercises(props) {
   };
 
   useEffect(() => {
-    fetchAllEquipment();
-    fetchAllCategories();
     fetchExercises();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkedCategories, checkedEquipment]);
@@ -148,15 +120,15 @@ function Exercises(props) {
         <FilterExercises
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          equipment={equipment}
-          categories={categories}
+          equipment={props.equipment}
+          categories={props.categories}
         />
       </div>
       <div className="max-w-2xl mx-auto pt-3 px-4 sm:pt-5 sm:px-6 lg:max-w-7xl lg:px-8">
         <ShowExercises
           exercises={exercises}
-          categories={categories}
-          equipment={equipment}
+          categories={props.categories}
+          equipment={props.equipment}
           openModal={showModal}
         />
       </div>

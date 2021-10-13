@@ -1,3 +1,5 @@
+import AddExerciseButton from "./AddExerciseButton";
+
 function ExerciseContainer(props) {
   //   console.log(props.contents.name);
 
@@ -21,18 +23,26 @@ function ExerciseContainer(props) {
     return "eq not found";
   });
 
+  const showExerciseButton = () => {
+    if (props.showAddExerciseButton) {
+      return (
+        <AddExerciseButton
+          openModal={props.openModal}
+          contents={props.contents}
+        />
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <>
       <div className="border-blue border-solid border-2 rounded-md my-1 pr-4">
         <h3 className="bg-blue font-bold text-white text-lg mt-4 ml-4 py-1 px-4 rounded-lg inline-block">
           {props.contents.name}
         </h3>
-        <button
-          onClick={() => props.openModal(props.contents)}
-          className="bg-white font-medium text-blue text-lg border border-blue mt-4 ml-4 py-1 px-4 rounded-lg hover:bg-lightblue hover:border-lightblue hover:text-white inline-block"
-        >
-          + Add to Workout
-        </button>
+        {showExerciseButton()}
         <div className="mx-5 mb-2 mt-4">
           <p className="text-md text-blue py-1">
             Target Area: <span className="font-bold">{categoryName}</span>

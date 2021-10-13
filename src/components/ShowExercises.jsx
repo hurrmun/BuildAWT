@@ -11,6 +11,7 @@ const ShowExercises = (props) => {
             categories={props.categories}
             equipment={props.equipment}
             openModal={props.openModal}
+            showAddExerciseButton={true}
           />
         );
       })}

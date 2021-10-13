@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Workouts from "./components/pages/Workouts";
@@ -8,6 +8,8 @@ import WorkoutName from "./components/pages/WorkoutName";
 
 //* change below to state that stores all current workouts
 function App() {
+  const [categories, setCategories] = useState([]);
+  const [equipment, setEquipment] = useState([]);
   const [workoutList, setWorkoutList] = useState([
     {
       name: "Workout 1 Name",
@@ -73,7 +75,7 @@ function App() {
     },
     {
       name: "Workout 2 Name",
-      href: "",
+      href: "/workouts/Workout 2 Name",
       exercises: [],
       imageSrc:
         "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
@@ -81,7 +83,7 @@ function App() {
     },
     {
       name: "Workout 3 Name",
-      href: "",
+      href: "/workouts/Workout 3 Name",
       exercises: [],
       imageSrc:
         "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
@@ -89,13 +91,42 @@ function App() {
     },
     {
       name: "Workout 4 Name",
-      href: "",
+      href: "/workouts/Workout 4 Name",
       exercises: [],
       imageSrc:
         "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
       imageAlt: "Workout 4 Image",
     },
   ]);
+
+  const fetchAllCategories = async () => {
+    try {
+      const res = await fetch(
+        "https://wger.de/api/v2/exercisecategory/?format=json"
+      );
+      const data = await res.json();
+      setCategories(data.results);
+      // console.log(data.results);
+    } catch (e) {
+      console.log("SOMETHING WENT WRONG!!!", e);
+    }
+  };
+
+  const fetchAllEquipment = async () => {
+    try {
+      const res = await fetch("https://wger.de/api/v2/equipment/?format=json");
+      const data = await res.json();
+      setEquipment(data.results);
+      // console.log(data.results);
+    } catch (e) {
+      console.log("SOMETHING WENT WRONG!!!", e);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllEquipment();
+    fetchAllCategories();
+  }, []);
 
   const createNewWorkout = () => {};
 
@@ -120,14 +151,22 @@ function App() {
           <Workouts workouts={workoutList} />
         </Route>
         <Route path="/exercises">
-          <Exercises workouts={workoutList} addExercise={addExercise} />
+          <Exercises
+            equipment={equipment}
+            categories={categories}
+            workouts={workoutList}
+            addExercise={addExercise}
+          />
         </Route>
         <Route path="/about">
           <h1>About</h1>
         </Route>
         <Route path="/workouts/:workoutName">
-          <h1>Workout Name</h1>
-          <WorkoutName />
+          <WorkoutName
+            workoutList={workoutList}
+            categories={categories}
+            equipment={equipment}
+          />
         </Route>
       </Switch>
     </div>
