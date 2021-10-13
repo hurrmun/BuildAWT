@@ -1,8 +1,8 @@
-import { Fragment, useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ShowExercises from "../ShowExercises";
 import NextPreviousPageButtons from "../NextPreviousPageButtons";
-import { Dialog, Transition } from "@headlessui/react";
 import FilterExercises from "../FilterExercises";
+import AddWorkoutModal from "../AddWorkoutModal";
 
 function Exercises(props) {
   const [categories, setCategories] = useState([]);
@@ -15,7 +15,7 @@ function Exercises(props) {
   const [selectedExercise, setSelectedExercise] = useState({});
   const [selectedWorkout, setSelectedWorkout] = useState("");
   const [open, setOpen] = useState(false);
-  const cancelButtonRef = useRef(null);
+  //   const cancelButtonRef = useRef(null);
 
   const fetchAllCategories = async () => {
     try {
@@ -166,8 +166,16 @@ function Exercises(props) {
           passFunction={fetchExercises}
         />
       </div>
-
-      <Transition.Root show={open} as={Fragment}>
+      <AddWorkoutModal
+        selectedExercise={selectedExercise}
+        selectedWorkout={selectedWorkout}
+        handleSelect={handleSelect}
+        workouts={props.workouts}
+        addExercise={props.addExercise}
+        open={open}
+        setOpen={setOpen}
+      />
+      {/* <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
           className="fixed z-10 inset-0 overflow-y-auto"
@@ -187,7 +195,6 @@ function Exercises(props) {
               <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             </Transition.Child>
 
-            {/* This element is to trick the browser into centering the modal contents. */}
             <span
               className="hidden sm:inline-block sm:align-middle sm:h-screen"
               aria-hidden="true"
@@ -260,7 +267,7 @@ function Exercises(props) {
             </Transition.Child>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition.Root> */}
     </>
   );
 }
