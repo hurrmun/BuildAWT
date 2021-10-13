@@ -52,7 +52,7 @@ function Workouts(props) {
           <NewWorkoutModal
             open={open}
             setOpen={setOpen}
-            addExercise={props.addExercise}
+            createNewWorkout={props.createNewWorkout}
           />
         </div>
       </div>

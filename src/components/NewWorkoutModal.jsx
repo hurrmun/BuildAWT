@@ -6,8 +6,11 @@ function NewWorkoutModal(props) {
   const nameInput = useRef();
   const imageInput = useRef();
   const handleSubmit = () => {
-    console.log("name", nameInput.current.value);
-    console.log("image", imageInput.current.value);
+    // console.log("name", nameInput.current.value);
+    // console.log("image", imageInput.current.value);
+    const workoutName = nameInput.current.value;
+    const workoutImage = imageInput.current.value;
+    props.createNewWorkout(workoutName, workoutImage);
   };
   return (
     <Transition.Root show={props.open} as={Fragment}>

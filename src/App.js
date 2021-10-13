@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation";
 import Workouts from "./components/pages/Workouts";
 import Exercises from "./components/pages/Exercises";
 import WorkoutName from "./components/pages/WorkoutName";
-import logoWhite from "./images/logo-white.svg";
+import logoWhite from "./images/ba-logo-white.png";
 
 //* change below to state that stores all current workouts
 function App() {
@@ -156,19 +156,12 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <button
-        onClick={() =>
-          createNewWorkout(
-            "new workout",
-            "https://media.self.com/photos/60e76fe01f69d35150b50014/4:3/w_2560%2Cc_limit/GettyImages-1254996115.jpg"
-          )
-        }
-      >
-        Hello
-      </button>
       <Switch>
         <Route exact path="/">
-          <Workouts workouts={workoutList} />
+          <Workouts
+            workouts={workoutList}
+            createNewWorkout={createNewWorkout}
+          />
         </Route>
         <Route path="/exercises">
           <Exercises
@@ -186,7 +179,6 @@ function App() {
             workoutList={workoutList}
             categories={categories}
             equipment={equipment}
-            addExercise={addExercise}
           />
         </Route>
       </Switch>
