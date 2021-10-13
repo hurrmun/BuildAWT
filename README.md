@@ -1,4 +1,4 @@
-### BuildAWT Application
+# BuildAWT Application
 
 ## Problem Statement
 
@@ -32,7 +32,11 @@ A user should be able to:
 6. Add exercises to new or existing workouts
 7. Remove exercises from workouts
 
-Extra: 8. Add additional information such as: Sets, Reps, Type of set, (and maybe remarks) to the exercise in workout 9. Add editable rest block in edit page 10. Change the position of rest blocks and exercises in edit page
+Extra:
+
+8. Add additional information such as: Sets, Reps, Type of set, (and maybe remarks) to the exercise in workout
+9. Add editable rest block in edit page
+10. Change the position of rest blocks and exercises in edit page
 
 ## Technology
 
@@ -41,3 +45,27 @@ CSS
 JavaScript
 React
 TailwindCSS
+
+## Wireframes
+
+\*The final design and wireframes may have some slight differences
+
+### Workouts Page
+
+![Workouts page](./wireframes/workouts.png)
+
+### Selected Workout
+
+![Workouts page](./wireframes/selectedWorkout.png)
+
+### Workout Editor (Bonus)
+
+![Workouts page](./wireframes/editWorkout.png)
+
+### Exercise Selector
+
+![Workouts page](./wireframes/exercises.png)
+
+### About Page
+
+![Workouts page](./wireframes/about.png)
