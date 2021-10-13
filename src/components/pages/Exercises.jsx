@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ShowExercises from "../ShowExercises";
 import NextPreviousPageButtons from "../NextPreviousPageButtons";
 import FilterExercises from "../FilterExercises";
-import AddWorkoutModal from "../AddWorkoutModal";
+import AddToWorkoutModal from "../AddToWorkoutModal";
 
 function Exercises(props) {
   const [checkedItems, setCheckedItems] = useState([]);
@@ -139,7 +139,7 @@ function Exercises(props) {
           passFunction={fetchExercises}
         />
       </div>
-      <AddWorkoutModal
+      <AddToWorkoutModal
         selectedExercise={selectedExercise}
         selectedWorkout={selectedWorkout}
         handleSelect={handleSelect}

@@ -1,7 +1,7 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-function AddWorkoutModal(props) {
+function AddToWorkoutModal(props) {
   const cancelButtonRef = useRef(null);
   return (
     <Transition.Root show={props.open} as={Fragment}>
@@ -89,7 +89,7 @@ function AddWorkoutModal(props) {
                 </button>
                 <div
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-blue px-4 py-2 cursor-pointer bg-white text-sm font-medium text-blue hover:bg-blue hover:text-white sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="w-full inline-flex justify-center rounded-md border border-blue px-4 py-2 cursor-pointer bg-white text-sm font-medium text-blue hover:bg-red hover:border-red hover:text-white sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={() => props.setOpen(false)}
                   ref={cancelButtonRef}
                 >
@@ -104,4 +104,4 @@ function AddWorkoutModal(props) {
   );
 }
 
-export default AddWorkoutModal;
+export default AddToWorkoutModal;
