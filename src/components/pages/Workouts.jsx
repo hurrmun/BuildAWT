@@ -13,7 +13,7 @@ function Workouts(props) {
           </h1>
           <button
             onClick={() => setOpen(true)}
-            className="bg-blue text-white justify-self-end px-4 rounded hover:bg-lightblue hover:border-blue"
+            className="bg-blue text-white justify-self-end px-4 rounded-lg hover:bg-lightblue hover:border-blue"
           >
             New Workout
           </button>

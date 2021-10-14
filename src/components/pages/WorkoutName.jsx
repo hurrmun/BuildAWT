@@ -28,7 +28,7 @@ function WorkoutName(props) {
             onClick={() => {
               props.deleteWorkout(currentWorkout);
             }}
-            className=" bg-blue text-white justify-self-end px-4 py-2 rounded hover:bg-red hover:border-red"
+            className=" bg-blue text-white justify-self-end px-4 py-2 rounded-lg hover:bg-red hover:border-red"
           >
             Delete Workout
           </Link>
