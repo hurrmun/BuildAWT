@@ -41,6 +41,7 @@ function WorkoutName(props) {
           equipment={props.equipment}
           openModal={props.openModal}
           removeExercise={props.removeExercise}
+          addRestBlock={props.addRestBlock}
         />
         <div className="flex flex-1 justify-center">
           <Link to="/exercises" className="">

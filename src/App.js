@@ -85,6 +85,16 @@ function App() {
     setWorkoutList(newWorkoutList);
   };
 
+  const addRestBlock = (workout, exerciseIndex) => {
+    const newWorkoutList = [...workoutList];
+    newWorkoutList[newWorkoutList.indexOf(workout)].exercises.splice(
+      exerciseIndex + 1,
+      0,
+      { name: "rest" }
+    );
+    setWorkoutList(newWorkoutList);
+  };
+
   return (
     <div className="App">
       <Navigation />
@@ -115,6 +125,7 @@ function App() {
               equipment={equipment}
               deleteWorkout={deleteWorkout}
               removeExercise={removeExercise}
+              addRestBlock={addRestBlock}
             />
           </Route>
           <Route>

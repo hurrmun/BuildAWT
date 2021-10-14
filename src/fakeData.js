@@ -21,6 +21,7 @@ const fakeData = [
         license_author: "sistab2",
         variations: [192, 100, 101, 163, 210, 211, 270, 399],
       },
+      { name: "rest" },
       {
         id: 97,
         uuid: "0ec76f5d-1311-4d6d-bf79-00fa17c3061a",

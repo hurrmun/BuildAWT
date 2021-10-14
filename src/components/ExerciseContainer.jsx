@@ -1,4 +1,5 @@
 import AddExerciseButton from "./AddExerciseButton";
+import RemoveExerciseButton from "./RemoveExerciseButton";
 
 function ExerciseContainer(props) {
   //   console.log(props.contents.name);
@@ -23,13 +24,13 @@ function ExerciseContainer(props) {
     return "eq not found";
   });
 
-  const RemoveExerciseButton = (props) => {
+  const AddRestButton = (props) => {
     return (
       <button
-        onClick={() => props.removeExercise(props.workout, props.index)}
-        className="bg-white font-medium text-blue text-lg border border-blue mt-4 ml-4 py-1 px-4 rounded-lg hover:bg-red hover:border-red hover:text-white inline-block"
+        onClick={() => props.addRestBlock(props.workout, props.index)}
+        className="bg-white font-medium text-blue text-lg border border-blue mt-4 ml-4 py-1 px-4 rounded-lg hover:bg-darkblue hover:border-darkblue hover:text-white inline-block"
       >
-        Remove Exercise
+        Add Rest Block
       </button>
     );
   };
@@ -42,13 +43,20 @@ function ExerciseContainer(props) {
           contents={props.contents}
         />
       );
-    } else if (props.removeExerciseButton) {
+    } else if (props.workoutNamePage) {
       return (
-        <RemoveExerciseButton
-          removeExercise={props.removeExercise}
-          workout={props.workout}
-          index={props.index}
-        />
+        <>
+          <AddRestButton
+            addRestBlock={props.addRestBlock}
+            workout={props.workout}
+            index={props.index}
+          />
+          <RemoveExerciseButton
+            removeExercise={props.removeExercise}
+            workout={props.workout}
+            index={props.index}
+          />
+        </>
       );
     }
   };
@@ -60,7 +68,7 @@ function ExerciseContainer(props) {
           {props.contents.name}
         </h3>
         {showButtons()}
-        <div className="mx-5 mb-2 mt-4">
+        <div className="mx-5 mb-2 mt-2">
           <p className="text-md text-blue py-1">
             Target Area: <span className="font-bold">{categoryName}</span>
           </p>
