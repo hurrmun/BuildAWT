@@ -17,7 +17,7 @@ const ShowWorkouts = (props) => {
         <h3 className="mt-4 text-xl text-blue font-bold inline-block">
           {workout.name}
         </h3>
-        <button>
+        <button onClick={() => props.deleteWorkout(workout)}>
           <TrashIcon className="h-6 mt-4 text-blue hover:text-red" />
         </button>
       </div>

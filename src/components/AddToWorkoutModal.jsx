@@ -66,6 +66,7 @@ function AddToWorkoutModal(props) {
                   onChange={props.handleSelect}
                   className="border border-blue rounded-md w-full inline-flex justify-center px-4 py-2 mb-3 sm:mb-0 text-base font-medium text-blue"
                 >
+                  <option value={null}>Select a Workout</option>
                   {props.workouts.map((item, index) => {
                     return (
                       <option key={index} value={item.name}>
@@ -88,7 +89,6 @@ function AddToWorkoutModal(props) {
                   Add
                 </button>
                 <div
-                  type="button"
                   className="w-full inline-flex justify-center rounded-md border border-blue px-4 py-2 cursor-pointer bg-white text-sm font-medium text-blue hover:bg-red hover:border-red hover:text-white sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={() => props.setOpen(false)}
                   ref={cancelButtonRef}

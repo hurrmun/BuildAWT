@@ -7,10 +7,10 @@ function ExerciseContainer(props) {
   //   console.log("eq", props.equipment);
   //   console.log("cat", props.categories);
 
-  const category = props.categories.filter(
+  const category = props?.categories?.filter(
     (item) => item.id === props.contents.category
   );
-  const categoryName = category[0].name;
+  const categoryName = category?.[0].name;
 
   const equipment = props?.contents?.equipment;
   const equipmentNames = equipment.map((item) => {

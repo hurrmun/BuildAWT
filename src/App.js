@@ -141,8 +141,8 @@ function App() {
   };
 
   const addExercise = (workout, exercise) => {
-    console.log("workout", workout);
-    console.log("exercise", exercise);
+    // console.log("workout", workout);
+    // console.log("exercise", exercise);
     const oldWorkoutList = [...workoutList];
     const newWorkoutList = oldWorkoutList.map((item) => {
       if (item.name === workout) {
@@ -150,6 +150,13 @@ function App() {
       }
       return item;
     });
+    setWorkoutList(newWorkoutList);
+  };
+
+  const deleteWorkout = (workout) => {
+    const newWorkoutList = [...workoutList];
+    console.log(newWorkoutList.indexOf(workout));
+    newWorkoutList.splice(newWorkoutList.indexOf(workout), 1);
     setWorkoutList(newWorkoutList);
   };
 
@@ -161,6 +168,7 @@ function App() {
           <Workouts
             workouts={workoutList}
             createNewWorkout={createNewWorkout}
+            deleteWorkout={deleteWorkout}
           />
         </Route>
         <Route path="/exercises">
@@ -179,6 +187,7 @@ function App() {
             workoutList={workoutList}
             categories={categories}
             equipment={equipment}
+            deleteWorkout={deleteWorkout}
           />
         </Route>
       </Switch>

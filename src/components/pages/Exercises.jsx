@@ -97,14 +97,14 @@ function Exercises(props) {
 
   const handleSelect = (event) => {
     event.preventDefault();
-    console.log("value", event.target.value);
+    // console.log("value", event.target.value);
     setSelectedWorkout(event.target.value);
   };
 
   const showModal = (contents) => {
     setSelectedExercise(contents);
     setOpen(true);
-    console.log("contents", contents);
+    // console.log("contents", contents);
   };
 
   return (
