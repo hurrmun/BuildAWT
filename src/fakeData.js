@@ -20,8 +20,10 @@ const fakeData = [
         license: 1,
         license_author: "sistab2",
         variations: [192, 100, 101, 163, 210, 211, 270, 399],
+        reps: 10,
+        sets: 3,
       },
-      { name: "rest" },
+      { type: "rest" },
       {
         id: 97,
         uuid: "0ec76f5d-1311-4d6d-bf79-00fa17c3061a",
@@ -39,6 +41,8 @@ const fakeData = [
         license: 1,
         license_author: "wger.de",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
       {
         id: 354,
@@ -57,7 +61,10 @@ const fakeData = [
         license: 2,
         license_author: "er0355",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 100,
         uuid: "b72ae8d4-ede6-4480-8fc5-7b80e369f7ed",
@@ -75,6 +82,8 @@ const fakeData = [
         license: 1,
         license_author: "wger.de",
         variations: [192, 100, 101, 163, 210, 211, 270, 399],
+        reps: 10,
+        sets: 3,
       },
       {
         id: 781,
@@ -93,6 +102,8 @@ const fakeData = [
         license: 3,
         license_author: "BFad07",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
     ],
     imageSrc:
@@ -122,7 +133,10 @@ const fakeData = [
         variations: [
           412, 362, 109, 110, 340, 214, 202, 670, 142, 108, 106, 339,
         ],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 803,
         uuid: "0849d95d-e83b-44bd-ae95-1fcb89fa5a04",
@@ -140,6 +154,8 @@ const fakeData = [
         license: 3,
         license_author: "BFad07",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
       {
         id: 213,
@@ -158,7 +174,10 @@ const fakeData = [
         license: 1,
         license_author: "tuckerm",
         variations: [213, 188, 187, 216, 215, 212, 424, 204],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 105,
         uuid: "22cca8fc-cfaf-4941-b0f7-faf9f2937c52",
@@ -176,6 +195,8 @@ const fakeData = [
         license: 1,
         license_author: "wger.de",
         variations: [105, 381, 161, 351, 328, 209],
+        reps: 10,
+        sets: 3,
       },
     ],
     imageSrc:
@@ -203,7 +224,10 @@ const fakeData = [
         license: 2,
         license_author: "Mikko Ruohola",
         variations: [405, 112, 113],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 914,
         uuid: "a9f2d62a-6a3c-4b20-b3ff-cb3654bf3195",
@@ -221,6 +245,8 @@ const fakeData = [
         license: 2,
         license_author: "hanswolo",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
       {
         id: 408,
@@ -229,7 +255,7 @@ const fakeData = [
         exercise_base: 265,
         status: "2",
         description:
-          "<p>Lie on you back with your hips and knees flexed, feet on the ground. From this position, raise your butt off of the ground to a height where your body makes a straight line from your knees to your shoulders. To make the exercise more intense, you can add weight by letting a barbell rest on your hips as you complete the motion, or you can put your feet on a slightly higher surface such as a step or a bench.</p>",
+          "<p>Lie on you back with your hips and knees flexed, feet on the ground. From this position, raise your butt off of the ground to a height where your body makes a straight line from your knees to your shoulders. To make the exercise more intense, you can add weight by letting a btypell rest on your hips as you complete the motion, or you can put your feet on a slightly higher surface such as a step or a bench.</p>",
         creation_date: "2016-07-31",
         category: 9,
         muscles: [8],
@@ -239,7 +265,10 @@ const fakeData = [
         license: 2,
         license_author: "tdprice12",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 854,
         uuid: "37097633-de80-4271-9b7c-291f359e0ef4",
@@ -257,6 +286,8 @@ const fakeData = [
         license: 2,
         license_author: "Bret Contreras",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
     ],
     imageSrc:
@@ -284,7 +315,10 @@ const fakeData = [
         license: 2,
         license_author: "student1234",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 91,
         uuid: "d325dd5c-6833-41c7-8eea-6b95c4871133",
@@ -302,7 +336,10 @@ const fakeData = [
         license: 1,
         license_author: "wger.de",
         variations: [91, 94, 92, 416, 93, 176, 95, 170],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 303,
         uuid: "ce37341b-379c-4611-ac9f-830c6c3c397a",
@@ -320,7 +357,10 @@ const fakeData = [
         license: 2,
         license_author: "nate303303",
         variations: [303, 166, 125, 126, 631],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 260,
         uuid: "36ef5f12-6f77-4754-a926-39915e4b57a5",
@@ -338,6 +378,8 @@ const fakeData = [
         license: 1,
         license_author: "aszc",
         variations: [260, 168, 182, 790, 302],
+        reps: 10,
+        sets: 3,
       },
       {
         id: 107,
@@ -356,7 +398,10 @@ const fakeData = [
         license: 1,
         license_author: "wger.de",
         variations: [],
+        reps: 10,
+        sets: 3,
       },
+      { type: "rest" },
       {
         id: 160,
         uuid: "b1d6d536-7f4a-4dd3-8b76-62d7a984e115",
@@ -375,6 +420,8 @@ const fakeData = [
         variations: [
           407, 342, 300, 191, 650, 389, 355, 160, 185, 111, 795, 387,
         ],
+        reps: 10,
+        sets: 3,
       },
     ],
     imageSrc:

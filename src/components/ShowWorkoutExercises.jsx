@@ -20,7 +20,7 @@ const ShowWorkoutExercises = (props) => {
   return (
     <div className="grid grid-cols-1 gap-1">
       {props.currentWorkout?.exercises?.map((exercise, index) => {
-        if (exercise.name === "rest") {
+        if (exercise.type === "rest") {
           return (
             <RestBlock
               key={index}

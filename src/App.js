@@ -90,7 +90,7 @@ function App() {
     newWorkoutList[newWorkoutList.indexOf(workout)].exercises.splice(
       exerciseIndex + 1,
       0,
-      { name: "rest" }
+      { type: "rest" }
     );
     setWorkoutList(newWorkoutList);
   };
