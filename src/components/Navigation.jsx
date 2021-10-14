@@ -14,7 +14,7 @@ function classNames(...classes) {
 }
 export default function Navigation(props) {
   return (
-    <Disclosure as="nav" className="bg-blue">
+    <Disclosure as="nav" className="bg-blue fixed w-full z-10">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">

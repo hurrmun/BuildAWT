@@ -10,7 +10,17 @@ function NewWorkoutModal(props) {
     // console.log("image", imageInput.current.value);
     const workoutName = nameInput.current.value;
     const workoutImage = imageInput.current.value;
-    props.createNewWorkout(workoutName, workoutImage);
+    if (workoutName) {
+      for (const workout of props.workouts) {
+        if (workoutName === workout.name) {
+          return alert("There is already a workout with this name!");
+        }
+      }
+      props.createNewWorkout(workoutName, workoutImage);
+      props.setOpen(false);
+    } else {
+      alert("Please name your workout!");
+    }
   };
   return (
     <Transition.Root show={props.open} as={Fragment}>
@@ -62,7 +72,7 @@ function NewWorkoutModal(props) {
 
                     <div className="mt-3 grid grid-cols-1 justify-items-start">
                       <label className="text-blue text-md mb-1" htmlFor="">
-                        Workout Name:
+                        Workout Name (required)
                       </label>
                       <input
                         type="text"
@@ -71,7 +81,7 @@ function NewWorkoutModal(props) {
                         ref={nameInput}
                       />
                       <label className="text-blue text-md mb-1 mt-3" htmlFor="">
-                        Thumbnail Image:
+                        Thumbnail Image
                       </label>
                       <input
                         type="text"
@@ -84,7 +94,6 @@ function NewWorkoutModal(props) {
                       <button
                         onClick={() => {
                           handleSubmit();
-                          props.setOpen(false);
                         }}
                         type="button"
                         className="w-full justify-end rounded-md border-2 border-blue px-4 py-2 mb-3 sm:mb-0 bg-blue text-sm font-medium text-white hover:bg-lightblue hover:border-lightblue sm:ml-3 sm:w-auto sm:text-sm"

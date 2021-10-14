@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import ExerciseContainer from "../ExerciseContainer";
+import ShowWorkoutExercises from "../ShowWorkoutExercises";
 
 function WorkoutName(props) {
   const [currentWorkout, setCurrentWorkout] = useState({});
@@ -15,28 +15,6 @@ function WorkoutName(props) {
     }
   }, [workoutName, props.workoutList]);
   // console.log("current workout", currentWorkout);
-
-  const ShowWorkoutExercises = () => {
-    return (
-      <div className="grid grid-cols-1 gap-1">
-        {currentWorkout?.exercises?.map((exercise, index) => {
-          return (
-            <ExerciseContainer
-              key={index}
-              contents={exercise}
-              categories={props.categories}
-              equipment={props.equipment}
-              openModal={props.openModal}
-              workout={currentWorkout}
-              removeExerciseButton={true}
-              removeExercise={props.removeExercise}
-              index={index}
-            />
-          );
-        })}
-      </div>
-    );
-  };
 
   return (
     <>
@@ -57,7 +35,13 @@ function WorkoutName(props) {
         </div>
       </div>
       <div className="max-w-2xl mx-auto pt-3 px-4 sm:pt-5 sm:px-6 lg:max-w-7xl lg:px-8">
-        <ShowWorkoutExercises />
+        <ShowWorkoutExercises
+          currentWorkout={currentWorkout}
+          categories={props.categories}
+          equipment={props.equipment}
+          openModal={props.openModal}
+          removeExercise={props.removeExercise}
+        />
         <div className="flex flex-1 justify-center">
           <Link to="/exercises" className="">
             <button className="font-bold text-white bg-blue py-4 px-10 rounded-lg my-4 hover:bg-lightblue">

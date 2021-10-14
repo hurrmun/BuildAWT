@@ -14,11 +14,11 @@ const ShowWorkouts = (props) => {
         </div>
       </Link>
       <div className="flex justify-between items-center">
-        <h3 className="mt-4 text-xl text-blue font-bold inline-block">
+        <h3 className="mt-4 text-2xl sm:text-xl text-blue font-bold inline-block">
           {workout.name}
         </h3>
         <button onClick={() => props.deleteWorkout(workout)}>
-          <TrashIcon className="h-6 mt-4 text-blue hover:text-red" />
+          <TrashIcon className="h-8 sm:h-6 mt-4 text-blue hover:text-red" />
         </button>
       </div>
       <p className="mt-1 text-sm font-medium text-blue truncate">

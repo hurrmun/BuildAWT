@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Workouts from "./components/pages/Workouts";
 import Exercises from "./components/pages/Exercises";
@@ -88,35 +88,40 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <Switch>
-        <Route exact path="/">
-          <Workouts
-            workouts={workoutList}
-            createNewWorkout={createNewWorkout}
-            deleteWorkout={deleteWorkout}
-          />
-        </Route>
-        <Route path="/exercises">
-          <Exercises
-            equipment={equipment}
-            categories={categories}
-            workouts={workoutList}
-            addExercise={addExercise}
-          />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/workouts/:workoutName">
-          <WorkoutName
-            workoutList={workoutList}
-            categories={categories}
-            equipment={equipment}
-            deleteWorkout={deleteWorkout}
-            removeExercise={removeExercise}
-          />
-        </Route>
-      </Switch>
+      <div className="pt-16 sm:pt-14">
+        <Switch>
+          <Route exact path="/">
+            <Workouts
+              workouts={workoutList}
+              createNewWorkout={createNewWorkout}
+              deleteWorkout={deleteWorkout}
+            />
+          </Route>
+          <Route path="/exercises">
+            <Exercises
+              equipment={equipment}
+              categories={categories}
+              workouts={workoutList}
+              addExercise={addExercise}
+            />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/workouts/:workoutName">
+            <WorkoutName
+              workoutList={workoutList}
+              categories={categories}
+              equipment={equipment}
+              deleteWorkout={deleteWorkout}
+              removeExercise={removeExercise}
+            />
+          </Route>
+          <Route>
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }

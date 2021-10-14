@@ -32,6 +32,7 @@ function Workouts(props) {
             open={open}
             setOpen={setOpen}
             createNewWorkout={props.createNewWorkout}
+            workouts={props.workouts}
           />
         </div>
       </div>
