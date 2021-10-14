@@ -2,7 +2,10 @@ const NextPreviousPageButtons = (props) => {
   const createPreviousPage = () => {
     return (
       <button
-        onClick={() => props.passFunction(props?.exercises.previous)}
+        onClick={() => {
+          window.scrollTo(0, 500);
+          props.passFunction(props?.exercises.previous);
+        }}
         className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white"
       >
         Previous page
@@ -13,7 +16,10 @@ const NextPreviousPageButtons = (props) => {
   const createNextPage = () => {
     return (
       <button
-        onClick={() => props.passFunction(props?.exercises.next)}
+        onClick={() => {
+          window.scrollTo(0, 500);
+          props.passFunction(props?.exercises.next);
+        }}
         className="w-40 m-2 relative px-4 py-2 border border-blue text-sm text-center font-medium rounded-md text-blue bg-white hover:bg-darkblue hover:text-white"
       >
         Next page
