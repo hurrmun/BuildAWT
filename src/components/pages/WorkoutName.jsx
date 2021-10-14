@@ -58,6 +58,13 @@ function WorkoutName(props) {
       </div>
       <div className="max-w-2xl mx-auto pt-3 px-4 sm:pt-5 sm:px-6 lg:max-w-7xl lg:px-8">
         <ShowWorkoutExercises />
+        <div className="flex flex-1 justify-center">
+          <Link to="/exercises" className="">
+            <button className="font-bold text-white bg-blue py-4 px-10 rounded-lg my-4 hover:bg-lightblue">
+              + Add exercises to workout
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );

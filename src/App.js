@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation";
 import Workouts from "./components/pages/Workouts";
 import Exercises from "./components/pages/Exercises";
 import WorkoutName from "./components/pages/WorkoutName";
+import About from "./components/pages/About";
 import logoWhite from "./images/ba-logo-white.png";
 import fakeData from "./fakeData";
 
@@ -104,7 +105,7 @@ function App() {
           />
         </Route>
         <Route path="/about">
-          <h1>About</h1>
+          <About />
         </Route>
         <Route path="/workouts/:workoutName">
           <WorkoutName
