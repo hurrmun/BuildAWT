@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ShowWorkoutExercises from "../ShowWorkoutExercises";
+import EditRepsAndSetsModal from "../EditRepsAndSetsModal";
 
 function WorkoutName(props) {
   const [currentWorkout, setCurrentWorkout] = useState({});
+  const [open, setOpen] = useState(false);
+  const [exerciseIndex, setExerciseIndex] = useState(0);
   const params = useParams();
   const workoutName = params.workoutName;
   // console.log("workout name", workoutName);
@@ -39,9 +42,10 @@ function WorkoutName(props) {
           currentWorkout={currentWorkout}
           categories={props.categories}
           equipment={props.equipment}
-          openModal={props.openModal}
           removeExercise={props.removeExercise}
           addRestBlock={props.addRestBlock}
+          setOpen={setOpen}
+          setExerciseIndex={setExerciseIndex}
         />
         <div className="flex flex-1 justify-center">
           <Link to="/exercises" className="">
@@ -50,6 +54,13 @@ function WorkoutName(props) {
             </button>
           </Link>
         </div>
+        <EditRepsAndSetsModal
+          open={open}
+          setOpen={setOpen}
+          exerciseIndex={exerciseIndex}
+          currentWorkout={currentWorkout}
+          editRepsAndSets={props.editRepsAndSets}
+        />
       </div>
     </>
   );

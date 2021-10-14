@@ -95,6 +95,17 @@ function App() {
     setWorkoutList(newWorkoutList);
   };
 
+  const editRepsAndSets = (workout, exerciseIndex, reps, sets) => {
+    const newWorkoutList = [...workoutList];
+    newWorkoutList[newWorkoutList.indexOf(workout)].exercises[
+      exerciseIndex
+    ].reps = reps;
+    newWorkoutList[newWorkoutList.indexOf(workout)].exercises[
+      exerciseIndex
+    ].sets = sets;
+    setWorkoutList(newWorkoutList);
+  };
+
   return (
     <div className="App">
       <Navigation />
@@ -126,6 +137,7 @@ function App() {
               deleteWorkout={deleteWorkout}
               removeExercise={removeExercise}
               addRestBlock={addRestBlock}
+              editRepsAndSets={editRepsAndSets}
             />
           </Route>
           <Route>

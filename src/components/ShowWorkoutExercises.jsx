@@ -23,6 +23,7 @@ const ShowWorkoutExercises = (props) => {
         if (exercise.name === "rest") {
           return (
             <RestBlock
+              key={index}
               workout={props.currentWorkout}
               removeExercise={props.removeExercise}
               index={index}
@@ -35,12 +36,13 @@ const ShowWorkoutExercises = (props) => {
               contents={exercise}
               categories={props.categories}
               equipment={props.equipment}
-              openModal={props.openModal}
               workout={props.currentWorkout}
               workoutNamePage={true}
               removeExercise={props.removeExercise}
               index={index}
               addRestBlock={props.addRestBlock}
+              setOpen={props.setOpen}
+              setExerciseIndex={props.setExerciseIndex}
             />
           );
         }
