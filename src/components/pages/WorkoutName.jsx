@@ -27,6 +27,10 @@ function WorkoutName(props) {
               categories={props.categories}
               equipment={props.equipment}
               openModal={props.openModal}
+              workout={currentWorkout}
+              removeExerciseButton={true}
+              removeExercise={props.removeExercise}
+              index={index}
             />
           );
         })}

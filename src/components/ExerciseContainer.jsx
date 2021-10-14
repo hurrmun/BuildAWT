@@ -10,7 +10,7 @@ function ExerciseContainer(props) {
   const category = props?.categories?.filter(
     (item) => item.id === props.contents.category
   );
-  const categoryName = category?.[0].name;
+  const categoryName = category?.[0]?.name;
 
   const equipment = props?.contents?.equipment;
   const equipmentNames = equipment.map((item) => {
@@ -23,7 +23,18 @@ function ExerciseContainer(props) {
     return "eq not found";
   });
 
-  const showExerciseButton = () => {
+  const RemoveExerciseButton = (props) => {
+    return (
+      <button
+        onClick={() => props.removeExercise(props.workout, props.index)}
+        className="bg-white font-medium text-blue text-lg border border-blue mt-4 ml-4 py-1 px-4 rounded-lg hover:bg-red hover:border-red hover:text-white inline-block"
+      >
+        Remove Exercise
+      </button>
+    );
+  };
+
+  const showButtons = () => {
     if (props.showAddExerciseButton) {
       return (
         <AddExerciseButton
@@ -31,8 +42,14 @@ function ExerciseContainer(props) {
           contents={props.contents}
         />
       );
-    } else {
-      return null;
+    } else if (props.removeExerciseButton) {
+      return (
+        <RemoveExerciseButton
+          removeExercise={props.removeExercise}
+          workout={props.workout}
+          index={props.index}
+        />
+      );
     }
   };
 
@@ -42,7 +59,7 @@ function ExerciseContainer(props) {
         <h3 className="bg-blue font-bold text-white text-lg mt-4 ml-4 py-1 px-4 rounded-lg inline-block">
           {props.contents.name}
         </h3>
-        {showExerciseButton()}
+        {showButtons()}
         <div className="mx-5 mb-2 mt-4">
           <p className="text-md text-blue py-1">
             Target Area: <span className="font-bold">{categoryName}</span>
